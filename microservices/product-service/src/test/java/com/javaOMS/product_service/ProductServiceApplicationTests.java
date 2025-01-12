@@ -2,6 +2,8 @@ package com.javaOMS.product_service;
 
 import com.javaOMS.product_service.dto.ProductRequest;
 import com.javaOMS.product_service.repository.ProductRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +19,14 @@ import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
-import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import java.math.BigDecimal;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Slf4j
 @SpringBootTest
 @Testcontainers
 @AutoConfigureMockMvc
@@ -52,13 +56,11 @@ class ProductServiceApplicationTests {
 						.content(productRequestString))
 				.andExpect(status().isCreated());
         Assertions.assertEquals(1, productRepository.findAll().size());
+		System.out.println("Test Passed: Product created successfully.");
 	}
 
 	private ProductRequest getProductRequest() {
-		return ProductRequest.builder()
-				.name("iphone")
-				.description("iphone")
-				.price(BigDecimal.valueOf(100))
-				.build();
+		return new ProductRequest("iphone", "iphone", "A12", BigDecimal.valueOf(100));
 	}
+
 }

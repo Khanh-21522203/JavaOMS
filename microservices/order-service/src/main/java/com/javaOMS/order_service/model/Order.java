@@ -19,6 +19,4 @@ public class Order {
     private String skuCode;
     private BigDecimal price;
     private Integer quantity;
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<OrderLineItems> orderLineItemsList;
 }
