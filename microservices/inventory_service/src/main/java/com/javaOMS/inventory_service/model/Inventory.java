@@ -1,12 +1,8 @@
 package com.javaOMS.inventory_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "t_inventory")

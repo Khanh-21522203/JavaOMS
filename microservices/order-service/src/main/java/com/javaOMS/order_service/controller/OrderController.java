@@ -2,6 +2,7 @@ package com.javaOMS.order_service.controller;
 
 import com.javaOMS.order_service.dto.OrderRequest;
 import com.javaOMS.order_service.service.OrderService;
+import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
